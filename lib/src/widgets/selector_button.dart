@@ -101,7 +101,13 @@ class SelectorButton extends StatelessWidget {
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) => AlertDialog(
+        contentPadding: EdgeInsets.all(0.0),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
         content: Container(
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(15.0))),
           width: double.maxFinite,
           child: CountrySearchListWidget(
             countries,

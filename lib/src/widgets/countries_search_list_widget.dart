@@ -34,7 +34,13 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
 
   InputDecoration getSearchBoxDecoration() {
     return widget.searchBoxDecoration ??
-        InputDecoration(labelText: 'Search by country name or dial code');
+        InputDecoration(
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(width: 0.9, color: Colors.black26),
+            ),
+            hintText: 'Type to Search ',
+            hintStyle: TextStyle(fontSize: 12.0),
+            contentPadding: EdgeInsets.only(bottom: 5.0, top: 18.0));
   }
 
   List<Country> filterCountries() {
@@ -70,10 +76,23 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            padding: const EdgeInsets.only(top: 5.0, left: 5.0),
+            child: IconButton(
+                icon: Icon(
+                  Icons.close,
+                  size: 28.0,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                })),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 0),
           child: TextFormField(
+            cursorColor: Colors.grey,
+            style: TextStyle(fontSize: 14.0),
             key: Key(TestHelper.CountrySearchInputKeyValue),
             decoration: getSearchBoxDecoration(),
             controller: _searchController,
@@ -83,6 +102,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
         ),
         Expanded(
           child: ListView.builder(
+            padding: EdgeInsets.all(0.0),
             controller: widget.scrollController,
             shrinkWrap: true,
             itemCount: filteredCountries.length,
@@ -90,6 +110,8 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
               Country country = filteredCountries[index];
               if (country == null) return null;
               return ListTile(
+                dense: true,
+                contentPadding: EdgeInsets.symmetric(horizontal: 18.0),
                 key: Key(TestHelper.countryItemKeyValue(country.countryCode)),
                 leading: CircleAvatar(
                   backgroundImage: AssetImage(
@@ -100,6 +122,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
                 title: Align(
                     alignment: AlignmentDirectional.centerStart,
                     child: Text('${getCountryName(country)}',
+                        style: TextStyle(fontSize: 14.0),
                         textAlign: TextAlign.start)),
                 subtitle: Align(
                     alignment: AlignmentDirectional.centerStart,

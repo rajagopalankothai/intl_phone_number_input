@@ -427,7 +427,7 @@ class _InputWidgetView
               ),
             ],
           ),
-          SizedBox(width: 12),
+          SizedBox(width: 1.0),
           Flexible(
             child: TextFormField(
               key: Key(TestHelper.TextInputKeyValue),
@@ -436,7 +436,8 @@ class _InputWidgetView
               focusNode: widget.focusNode,
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
-              keyboardType: TextInputType.phone,
+              keyboardType:
+                  TextInputType.numberWithOptions(signed: true, decimal: true),
               textInputAction: widget.keyboardAction,
               style: widget.textStyle,
               decoration: state.getInputDecoration(widget.inputDecoration),
