@@ -411,23 +411,23 @@ class _InputWidgetView
           Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-//              SelectorButton(
-//                country: state.country,
-//                countries: state.countries,
-//                onCountryChanged: state.onCountryChanged,
-//                selectorType: widget.selectorType,
-//                selectorTextStyle: widget.selectorTextStyle,
-//                searchBoxDecoration: widget.searchBoxDecoration,
-//                locale: widget.locale,
-//                isEnabled: widget.isEnabled,
-//                isScrollControlled: widget.countrySelectorScrollControlled,
-//              ),
-//              SizedBox(
-//                height: state.selectorButtonBottomPadding,
-//              ),
+              SelectorButton(
+                country: state.country,
+                countries: state.countries,
+                onCountryChanged: state.onCountryChanged,
+                selectorType: widget.selectorType,
+                selectorTextStyle: widget.selectorTextStyle,
+                searchBoxDecoration: widget.searchBoxDecoration,
+                locale: widget.locale,
+                isEnabled: widget.isEnabled,
+                isScrollControlled: widget.countrySelectorScrollControlled,
+              ),
+              SizedBox(
+                height: state.selectorButtonBottomPadding,
+              ),
             ],
           ),
-          //  SizedBox(width: 1.0),
+          SizedBox(width: 1.0),
           Flexible(
             child: TextFormField(
               key: Key(TestHelper.TextInputKeyValue),
@@ -440,25 +440,7 @@ class _InputWidgetView
                   TextInputType.numberWithOptions(signed: true, decimal: true),
               textInputAction: widget.keyboardAction,
               style: widget.textStyle,
-              // decoration: state.getInputDecoration(widget.inputDecoration),
-              decoration: InputDecoration(
-                prefixIcon: Container(
-                  width: 100.0,
-                  child: SelectorButton(
-                    country: state.country,
-                    countries: state.countries,
-                    onCountryChanged: state.onCountryChanged,
-                    selectorType: widget.selectorType,
-                    selectorTextStyle: widget.selectorTextStyle,
-                    searchBoxDecoration: widget.searchBoxDecoration,
-                    locale: widget.locale,
-                    isEnabled: widget.isEnabled,
-                    isScrollControlled: widget.countrySelectorScrollControlled,
-                  ),
-                ),
-                border: widget.inputBorder ?? UnderlineInputBorder(),
-                hintText: widget.hintText,
-              ),
+              decoration: state.getInputDecoration(widget.inputDecoration),
               onEditingComplete: widget.onSubmit,
               autovalidate: widget.autoValidate,
               validator: state.validator,
